@@ -3,6 +3,7 @@ import package  # Make sure this is the correct name of the module where your Pa
 import  pandas
 from track import Track
 from packages import Packages
+from greedy_algolithm import GreedyAlgolithm
 # Call the load_data function to get the dataframes
 distance_df, package_df = load_data()
 
@@ -38,3 +39,7 @@ track1.assign_package(track1_package_ids)
 track1.packages.print()
 
 
+test_greedy = GreedyAlgolithm()
+print(test_greedy.greedy_algolithm(" HUB", track1.packages_array))
+print(track1.packages_array)
+print(test_greedy.distance_array)
