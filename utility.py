@@ -12,7 +12,7 @@ def load_data():
   package_df.columns = ['ID', 'Address', 'City', 'State', 'Zip', 'Deadline', 'Weight KILO', 'Special Notes']
 
   # print(distance_df)
-  # print(addresses)
+  # # print(addresses)
   # print(package_df)
   
   return distance_df, package_df

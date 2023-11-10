@@ -28,20 +28,16 @@ class ChainingHashTable:
             if key == k:
                 return v
         return None
-      
+
     def print(self):
-      print(self.table)
+        print(self.table)
+
+    def get_key(self, value):
+        for index in range(self.size):
+            for k, v in self.table[index]:
+                if v == value:
+                    return k
+        return None
 
 
-# Example usage:
-ht = ChainingHashTable(10)  # Create a hash table with 10 slots
-ht.insert("key1", "value1")
-ht.insert("key2", "value2")
-ht.insert("key1", "value3")  # This will update the value for "key1"
-ht.print()
-print(ht.search("key1"))  # Output: value3
-print(ht.search("key2"))  # Output: value2
-print(ht.search("key3"))  # Output: None
 
-ht.remove("key1")
-print(ht.search("key1"))  # Output: None
