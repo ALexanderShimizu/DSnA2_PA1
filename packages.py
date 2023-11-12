@@ -11,7 +11,7 @@ class Packages:
         distance_df, package_df = load_data()
         data = (
             package_df.values.tolist()
-        )  # This converts the DataFrame rows to a list of lists
+        )  
 
         for i in data:
             address = " " + i[1]

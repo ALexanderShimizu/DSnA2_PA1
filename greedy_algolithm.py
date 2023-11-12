@@ -14,12 +14,10 @@ class GreedyAlgolithm:
         addresses = distance_df.iloc[:, 0].to_list()
         data = (
             distance_df.values.tolist()
-        )  # This converts the DataFrame rows to a list of lists
+        ) 
         for i in range(len(addresses)):
             self.distance_table.insert(addresses[i], data[i][1:])
             self.address_index_table.insert(addresses[i], i)
-        # self.distance_hash_table.print()
-        # self.adress_index_table.print()
 
     def greedy_algolithm(self, current_location, packages_array):
         cureent_location_index = self.address_index_table.search(current_location)
@@ -27,7 +25,7 @@ class GreedyAlgolithm:
         next_location_distance = float("inf")
         for i in packages_array:
             if i == current_location and packages_array.count(i) == 1:
-                continue  # Skip the current location if it's not a duplicate
+                continue  
             package_address_index = self.address_index_table.search(i)
             if cureent_location_index <= package_address_index:
                 compared_distance = float(

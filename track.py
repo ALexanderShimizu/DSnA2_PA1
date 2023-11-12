@@ -6,8 +6,6 @@ from greedy_algolithm import GreedyAlgolithm
 
 class Track:
     def __init__(self):
-        # This contains (Adress, ID)
-        self.packages_id_hash_table = ChainingHashTable(16)
         self.packages_array = []
         self.miles = 0
         self.time = time(0, 0)
@@ -27,23 +25,18 @@ class Track:
         hours_spent = miles / 16
 
         additional_time = timedelta(hours=hours_spent)
-        self.time_spent += additional_time  # Add to the existing time
+        self.time_spent += additional_time 
 
     def get_time(self):
         placeholder_date = datetime(2000, 1, 1)
         current_datetime = datetime.combine(placeholder_date, self.time)
         new_datetime = current_datetime + self.time_spent
-        # Return the time part
         return new_datetime.time()
-
-    # def add_package(self, package):
-    #     self.add_package.append(package)
 
     def assign_package(self, package_ids):
         packages_hash_table = Packages().hash_table
         for i in package_ids:
             address = packages_hash_table.search(i)
-            self.packages_id_hash_table.insert(address, i)
             self.packages_array.append(address)
         print(self.packages_array)
 

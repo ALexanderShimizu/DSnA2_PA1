@@ -7,13 +7,7 @@ def load_data():
   addresses.insert(0, "address")
   distance_df.columns = addresses
   package_df = pd.read_csv("Data/wgu_package_data_formatted.csv")
-  
-
   package_df.columns = ['ID', 'Address', 'City', 'State', 'Zip', 'Deadline', 'Weight KILO', 'Special Notes']
 
-  # print(distance_df)
-  # # print(addresses)
-  # print(package_df)
-  
   return distance_df, package_df
 
