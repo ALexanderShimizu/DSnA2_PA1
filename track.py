@@ -7,6 +7,7 @@ from greedy_algolithm import GreedyAlgolithm
 class Track:
     def __init__(self):
         self.packages_array = []
+        self.id_array = []
         self.miles = 0
         self.time = time(0, 0)
         self.time_spent = timedelta()
@@ -34,9 +35,10 @@ class Track:
         return new_datetime.time()
 
     def assign_package(self, package_ids):
+        self.id_array = package_ids
         packages_hash_table = Packages().hash_table
         for i in package_ids:
-            address = packages_hash_table.search(i)
+            address = packages_hash_table.search(i).address
             self.packages_array.append(address)
         print(self.packages_array)
 
@@ -51,10 +53,13 @@ class Track:
                 break
             self.count_miles(miles)
             self.calculate_time(miles)
-            print(f"Dropped of at {next_address}: Time {self.get_time()}")
+            delivered_package_id = self.id_array[self.packages_array.index(next_address)]
+            
+            print(f"Package {delivered_package_id} dropped of at {next_address}: Time {self.get_time()}")
             print(f"Traveled {miles} miles")
             if self.current_address != " HUB":
                 self.packages_array.remove(self.current_address)
+                self.id_array.remove(delivered_package_id)
             self.current_address = next_address
 
         print(f"Traveled {self.miles} miles \n")
