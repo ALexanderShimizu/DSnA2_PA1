@@ -41,10 +41,9 @@ while True:
     track2.deliver((hour, minute))
     track3.deliver((hour, minute))
 
-    # Each track returns to the hub after delivery.
+    # Track1 needs to go back to hub, so the driver can use track3
     track1.back_to_hub()
-    track2.back_to_hub()
-    track3.back_to_hub()
+
 
     # Printing the status of all packages after the delivery process.
     packages_info.print_status_all()

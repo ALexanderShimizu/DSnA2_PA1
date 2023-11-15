@@ -1,7 +1,7 @@
 from datetime import time, timedelta, datetime
 from hash_table import ChainingHashTable
 from packages import Packages
-from greedy_algolithm import GreedyAlgolithm
+from greedy_algorithm import GreedyAlgorithm
 
 
 class Track:
@@ -61,11 +61,11 @@ class Track:
         for i in self.id_array:
             self.packages_info.search(i).delivery_status = "en route"
 
-        greedy_algolithm_instance = GreedyAlgolithm()
+        greedy_algolithm_instance = GreedyAlgorithm()
 
         # Continue delivery until all packages are delivered or time runs out
         while self.packages_array:
-            next_address, miles = greedy_algolithm_instance.greedy_algolithm(
+            next_address, miles = greedy_algolithm_instance.greedy_algorithm(
                 current_location=self.current_address,
                 packages_array=self.packages_array,
             )
@@ -100,10 +100,9 @@ class Track:
 
     def back_to_hub(self):
         # Calculate and travel back to the hub after deliveries
-        greedy_algolithm_instance = GreedyAlgolithm()
-        hub, miles = greedy_algolithm_instance.greedy_algolithm(
+        greedy_algolithm_instance = GreedyAlgorithm()
+        hub, miles = greedy_algolithm_instance.greedy_algorithm(
             self.current_address, [" HUB"]
         )
         self.count_miles(miles)
         print(f"Track 1 Back to Hub: Traveled {miles}miles")
-
