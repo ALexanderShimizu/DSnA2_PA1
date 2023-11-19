@@ -26,28 +26,24 @@ class Packages:
         # Method to search for a package in the hash table using its key.
         return self.hash_table.search(key)
 
+    def print_header(self):
+        # Print Header
+        header = (
+            "PackageID, Address, City, State, Zip, Delivery Deadline, Mass KILO, Special Notes, "
+            "Status, Delivered Time, Distance from Last Location, Name of the Track"
+        )
+        print(header)
+
     def print_status_all(self):
         # Method to print the status of all packages.
+        self.print_header()
         for i in range(1, 41):
             # Iterate through package IDs.
             package = self.search(str(i))  # Search for the package by its ID.
-            # Check and print the delivery status of the package.
-            if package.delivery_status == "Delivered":
-                if package.note != "":
-                    # Print details including special note if it exists.
-                    print(
-                        f"Package {i} delivered by {package.track} to {package.address} at {package.delivered_time} | Special Note: {package.note}"
-                    )
-                else:
-                    # Print details without special note.
-                    print(
-                        f"Package {i} delivered by {package.track} to {package.address} at {package.delivered_time}"
-                    )
-            elif package.delivery_status == "en route":
-                # Print details for packages that are en route.
-                print(
-                    f"Package {i} {package.delivery_status} to {package.address} by {package.track}"
-                )
-            elif package.delivery_status == "at HUB":
-                # Print details for packages that are still at the HUB.
-                print(f"Package {i} is at {package.delivery_status}")
+            print(f"ID: {i},", end="") # Print package info
+            package.print_all()
+
+    def print_a_package(self, id):
+        self.print_header
+        print(f"ID: {id},", end="")
+        self.search(id).print_all()

@@ -22,6 +22,14 @@ class Track:
     def set_time(self, h, m):
         # Set the start time for the truck
         self.time = time(h, m)
+        if (
+            self.get_time() >= time(10, 20)
+            and self.packages_info.search("9").address == " 300 State St"
+        ):
+            self.packages_info.search("9").change_address(
+                " 410 S State St", "Salt Lake City", "84111"
+            )
+            print(self.packages_info.search("9").address)
 
     def update_time(self, hours, minutes):
         # Update the truck's current time
@@ -54,7 +62,7 @@ class Track:
     def deliver(self, end):
         # Deliver packages until the specified end time
         end_hour, end_minute = end
-        if self.get_time() >= time(end_hour, end_minute):
+        if self.get_time() > time(end_hour, end_minute):
             return  # Stop delivery if current time exceeds end time
 
         # Mark all packages as 'en route' at the start of delivery
@@ -75,9 +83,17 @@ class Track:
             # Update truck's mileage and time after each delivery
             self.count_miles(miles)
             self.calculate_time(miles)
+
             if self.get_time() >= time(end_hour, end_minute):
                 break  # Stop delivery if current time exceeds end time
-
+            if (
+                self.get_time() >= time(10, 20)
+                and self.packages_info.search("9").address == " 300 State St"
+            ):
+                self.packages_info.search("9").change_address(
+                    " 410 S State St", "Salt Lake City", "84111"
+                )
+                print(self.packages_info.search("9").address)
             # Update package delivery status and time
             delivered_package_id = str(
                 self.id_array[self.packages_array.index(next_address)]

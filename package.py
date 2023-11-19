@@ -15,16 +15,18 @@ class Package:
         self.miles_from_last_location = None  # Miles traveled from the last location.
         self.track = ""  # The track assigned to deliver the package.
 
+
     def print_all(self):
-        # Method to print all details of the package.
-        print(f"Address: {self.address}")
-        print(f"City: {self.city}")
-        print(f"State: {self.state}")
-        print(f"Zip Code: {self.zip_code}")
-        print(f"Deadline: {self.deadline}")
-        print(f"Weight: {self.weight}")
-        print(f"Note: {self.note}")
-        print(f"Is Delivered: {self.delivery_status}")
-        print(f"Delivered Time: {self.delivered_time}")
-        print(f"Miles from Last Location: {self.miles_from_last_location}")
-        print(f"Delivered by {self.track}")
+        # Method to print all details of the package in a single line.
+        package_details = (
+            f"{self.address}, {self.city}, {self.state}, {self.zip_code}, "
+            f"{self.deadline}, {self.weight} KILO, '{self.note}', {self.delivery_status}, "
+            f"{self.delivered_time}, {self.miles_from_last_location} miles, Delivered by {self.track}"
+        )
+        print(package_details)
+
+    def change_address(self, address, city, zip):
+        # Change the address
+        self.address = address
+        self.city = city
+        self.zip_code = zip
